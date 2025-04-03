@@ -5,6 +5,7 @@
       font-family: "Baloo Tamma";
       src : url("/BalooTamma.woff2");
    }
+
    :root
    {
       --underall : #616;
@@ -75,6 +76,10 @@
    }
 
 </style>
+<script>
+   import Navigator from "$lib/components/Navigator.svelte";
+</script>
+<Navigator/>
 <section>
    <h1>Puna</h1>
 </section>

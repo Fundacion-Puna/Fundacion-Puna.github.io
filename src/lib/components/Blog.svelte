@@ -4,6 +4,10 @@
       width:100%;
    }
 </style>
+<script>
+   let { author, date, title, headerUrl } = $props();
+</script>
 <main class="blog-body">
-   <textarea name="body" id="" class="blog-content"></textarea>
+   <div class="metadata-box"></div>
+   <div class="center"></div>
 </main>
