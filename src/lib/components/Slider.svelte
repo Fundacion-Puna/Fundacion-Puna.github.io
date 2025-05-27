@@ -130,6 +130,7 @@
       display: inline;
       min-width: 100%;
       height: 100%;
+      user-select:none;
       object-fit: cover;
     }
   }
@@ -149,7 +150,6 @@
     opacity: 1;
   }
 
-
   .slider-button.left {
     left:calc(42% - 340px)
   }
@@ -166,6 +166,7 @@
     background: none;
     outline:none;
     border:none;
+    user-select:none;
     color: #FFF;
     text-shadow: 1px 2px 2px #222;
   }
