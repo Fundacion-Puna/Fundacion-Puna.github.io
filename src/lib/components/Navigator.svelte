@@ -18,11 +18,9 @@
 <style>
   nav {
     box-sizing: border-box;
-    margin: auto;
     width: 100%;
     height: max-content;
-    max-height: 68px;
-    padding: 1rem;
+    padding: 1.8rem 0;
     background-color: var(--panel-b);
     user-select: none;
 

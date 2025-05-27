@@ -101,7 +101,8 @@
 
 <Navigator isFinished="false" />
 <section class="introduction">
-  <h1>Humedal: Abreo-Malpaso</h1>
+  <h1>Humedal:
+    Abreo-Malpaso</h1>
 </section>
 <Slider {images} />
 <section class="gross-stroke">
@@ -181,7 +182,7 @@
   }
 
   section.gross-stroke {
-    height: 100px;
+    height: 80px;
     background: unset;
     background-color: #111;
     flex-grow: 0.1;

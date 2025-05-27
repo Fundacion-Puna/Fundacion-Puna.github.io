@@ -120,6 +120,7 @@
     margin: auto;
     width: 100%;
     height: 95%;
+    max-height: 480px;
     display: flex;
     gap: 1rem;
     flex-direction: row;
@@ -127,9 +128,9 @@
 
     & .slide{
       display: inline;
-      min-width:100%;
-      height:100%;
-      object-fit: contain;
+      min-width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
   }
 
