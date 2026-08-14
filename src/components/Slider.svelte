@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   let { images }  = $props();
   
   let year = $state();
@@ -73,43 +73,36 @@
   onmouseenter={stop}
   onmouseleave={play}
 >
-<select bind:value={year} onchange={changeYear}>
+<!-- <select bind:value={year} onchange={changeYear}>
   <option selected value="0">2010</option>
   <option value="1">2013</option>
   <option value="2">2015</option>
   <option value="3">2017</option>
   <option value="4">2023</option>
   <option value="5">2024</option>
-</select>
-  <div>
+</select> -->
+  <div class="w-full h-full">
     <figure style="transform: translateX(calc(-{current * 100}% - {current * 16}px))">
     {#each view as image (image.url)}
         <img class="slide visible" use:lazyLoad={image.url} alt={image.title} />
     {/each}
     </figure>
   </div>
-  <button class="slider-button left" onclick={previous}>&#8592;</button>
-  <button class="slider-button right" onclick={next}>&#8594;</button>
+  <!-- <button class="slider-button left" onclick={previous}>&#8592;</button>
+  <button class="slider-button right" onclick={next}>&#8594;</button> -->
 </section>
 
 <style>
 
   section {
     position:relative;
-    width: 100%;
-    height: max-content;
     min-height: 480px;
     margin: 0;
-    padding: 2rem 0;
     box-sizing: border-box;
     background: linear-gradient(to top, #111a, #2223, #2221, #4441 );
-    text-align: center;
   }
 
   div {
-    width: 100%;
-    max-width: 640px;
-    min-height: 480px;
     margin: auto;
     padding: 1rem;
     background-color: #222;

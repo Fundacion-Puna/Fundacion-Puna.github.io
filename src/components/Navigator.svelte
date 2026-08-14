@@ -5,17 +5,20 @@
 
 </script>
 
-<nav>
-{#if isFinished}
+<nav class="flex">
+{#if isFinished === "false"}
   <p>Sitio en construcción &#128522; ...</p>
 {:else}
+  <h1 class="inline">Salvemos Abreo-Malpaso</h1>
   <p>Archivos</p>
   <p>Blog</p>
   <p>Humedal</p>
 {/if}
 </nav>
 
-<style>
+<style lang="postcss">
+@reference 'tailwindcss';
+
   nav {
     box-sizing: border-box;
     width: 100%;

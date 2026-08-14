@@ -1,6 +1,7 @@
 <script>
-  import Slider from "$lib/components/Slider.svelte";
-  import Navigator from "$lib/components/Navigator.svelte";
+  import "./app.css";
+  import Slider from "../components/Slider.svelte";
+  import Navigator from "../components/Navigator.svelte";
 
   let images = [
     [
@@ -99,12 +100,10 @@
 
 <svelte:head></svelte:head>
 
-<Navigator isFinished="false" />
+<Navigator isFinished="true" />
 <section class="introduction">
-  <h1>Humedal:
-    Abreo-Malpaso</h1>
+  <Slider {images} />
 </section>
-<Slider {images} />
 <section class="gross-stroke">
   <h1>Puna - 2025</h1>
 </section>
@@ -163,22 +162,7 @@
   }
 
   section.introduction {
-    padding: 0 2vw;
-    text-align: left;
     background: linear-gradient(to bottom, #1119, #2223, #2221, #3331, #4441);
-
-    & h1 {
-      font-size: 3rem;
-      white-space: pre-wrap;
-      user-select: none;
-      max-width: 45%;
-      color: var(--headings);
-    }
-
-    & aside {
-      float: right;
-      font-size: 1.45rem;
-    }
   }
 
   section.gross-stroke {
