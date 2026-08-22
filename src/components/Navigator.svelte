@@ -1,35 +1,37 @@
-<script>
+<script lang="ts">
+  import Link from './atoms/Link.svelte'
+
   /* Only add navigation is site is not in construction */
 
   let { isFinished } = $props();
 
+  const SECTIONS = [
+    {route: "archive", content: "Archivos"},
+    {route: "blog",    content: "Blog"},
+    {route: "humedal", content: "Humedal"},
+  ] as const
+
 </script>
 
-<nav class="flex">
-{#if isFinished === "false"}
-  <p>Sitio en construcción &#128522; ...</p>
-{:else}
+<nav class="flex content-between border-box w-full py-2 px-4 h-8">
   <h1 class="inline">Salvemos Abreo-Malpaso</h1>
-  <p>Archivos</p>
-  <p>Blog</p>
-  <p>Humedal</p>
-{/if}
+
+  <div class="mx-2">
+  {#each SECTIONS as section}
+    <Link
+      styles="px-2 mx-4"
+      route={section.route}
+      content={section.content}/>
+  {/each}
+  </div>
 </nav>
 
 <style lang="postcss">
 @reference 'tailwindcss';
 
   nav {
-    box-sizing: border-box;
-    width: 100%;
     height: max-content;
-    padding: 1.8rem 0;
     background-color: var(--panel-b);
     user-select: none;
-
-    & p {
-      display: inline-block;
-      margin: 0 1rem;
-    }
   }
 </style>
