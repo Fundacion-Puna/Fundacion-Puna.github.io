@@ -1,7 +1,7 @@
 <script>
   import "./app.css";
-  import Slider from "../components/Slider.svelte";
-  import Navigator from "../components/Navigator.svelte";
+  import Slider from "../components/organisms/Slider.svelte";
+  import Navigator from "../components/organisms/Navigator.svelte";
 
   let images = [
     [
@@ -100,13 +100,13 @@
 
 <svelte:head></svelte:head>
 
-<Navigator isFinished="true" />
+<Navigator/>
 <section class="introduction">
   <Slider {images} />
 </section>
-<section class="gross-stroke">
+<!-- <section class="gross-stroke">
   <h1>Puna - 2025</h1>
-</section>
+</section> -->
 
 <style>
   @font-face {
