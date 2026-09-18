@@ -1,1 +1,48 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+@import '@skeletonlabs/skeleton';
+@import '@skeletonlabs/skeleton-svelte';
+@import '@skeletonlabs/skeleton/themes/pine';
+
+/* Project fonts --------------------------------------------------------- */
+
+@font-face {
+	font-family: 'Baloo Tamma';
+	src: url('/BalooTamma.woff2') format('woff2');
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Noticia Text';
+	src: url('/NoticiaText-Regular.woff2') format('woff2');
+	font-display: swap;
+}
+
+/* Keep the site's own typography on top of the Skeleton theme. */
+[data-theme='pine'] {
+	--typo-base--font-family: 'Noticia Text', Georgia, serif;
+	--typo-heading--font-family: 'Baloo Tamma', 'Noticia Text', Georgia, serif;
+	--typo-anchor--font-family: inherit;
+}
+
+@theme {
+	--font-display: 'Baloo Tamma', 'Noticia Text', Georgia, serif;
+}
+
+@layer base {
+	:focus-visible {
+		outline: 2px solid var(--color-primary-500);
+		outline-offset: 2px;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		*,
+		*::before,
+		*::after {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+			scroll-behavior: auto !important;
+		}
+	}
+}

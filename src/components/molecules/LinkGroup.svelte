@@ -1,19 +1,36 @@
 <script lang="ts">
+  import { SECTIONS } from "$lib/sections.js";
   import Link from "../atoms/Link.svelte";
 
-  const SECTIONS = [
-    { route: "archive", content: "Archivos" },
-    { route: "blog", content: "Blog" },
-    { route: "humedal", content: "Humedal" },
-  ] as const;
+  interface Props {
+    /** `row` for the desktop bar, `column` for the mobile drawer. */
+    orientation?: "row" | "column";
+    linkStyles?: string;
+    onnavigate?: () => void;
+  }
+
+  let {
+    orientation = "row",
+    linkStyles = "",
+    onnavigate,
+  }: Props = $props();
 </script>
 
-  <div class="mx-2">
-    {#each SECTIONS as section}
+<ul
+  class="flex list-none gap-2 p-0 {orientation === 'column'
+    ? 'flex-col items-stretch gap-1'
+    : 'flex-row items-center'}"
+>
+  {#each SECTIONS as section (section.route)}
+    <li>
       <Link
-        styles="px-2 mx-4"
         route={section.route}
         content={section.content}
+        onclick={onnavigate}
+        styles="block py-2 {orientation === 'column'
+          ? 'w-full px-3 text-lg'
+          : 'px-4'} {linkStyles}"
       />
-    {/each}
-  </div>
+    </li>
+  {/each}
+</ul>

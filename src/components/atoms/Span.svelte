@@ -1,15 +1,33 @@
 <script lang="ts">
-  import { onMount } from "svelte";
-  let { children, transition, args, onFinish } = $props()
+  import type { Snippet } from "svelte";
+  import type { TransitionConfig } from "svelte/transition";
 
-  onMount(() => {
-    onFinish()
-    return () => {
-    }
-  })
+  interface Props {
+    children?: Snippet;
+    transition: (node: Element, args: any) => TransitionConfig;
+    args?: Record<string, unknown>;
+    /** Fires when the intro transition has actually finished. */
+    onIntroEnd?: () => void;
+    /** Fires when the outro transition has actually finished. */
+    onOutroEnd?: () => void;
+    styles?: string;
+  }
+
+  let {
+    children,
+    transition,
+    args = {},
+    onIntroEnd,
+    onOutroEnd,
+    styles = "",
+  }: Props = $props();
 </script>
 
-<span transition:transition={{...args}} class="mx-1 block">
+<span
+  transition:transition={args}
+  onintroend={onIntroEnd}
+  onoutroend={onOutroEnd}
+  class="block {styles}"
+>
   {@render children?.()}
 </span>
-

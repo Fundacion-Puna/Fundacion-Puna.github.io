@@ -1,7 +1,8 @@
 <script>
-  import "./app.css";
-  import Slider from "../components/organisms/Slider.svelte";
-  import Navigator from "../components/organisms/Navigator.svelte";
+  import Hero from "../components/organisms/Hero.svelte";
+
+  // One entry per group in `images`, in the same order.
+  const YEARS = [2010, 2013, 2015, 2017, 2023, 2024];
 
   let images = [
     [
@@ -96,91 +97,16 @@
       { url: "Totalmente cubierto por planta invasora.jpg", title: "HAM" },
     ],
   ];
+
+  const photoCount = images.flat().length;
 </script>
 
-<svelte:head></svelte:head>
+<svelte:head>
+  <title>Salvemos Abreo-Malpaso — humedal de Rionegro</title>
+  <meta
+    name="description"
+    content="Archivo fotográfico del deterioro del humedal Abreo-Malpaso (Rionegro, Antioquia) entre 2010 y 2024, y campaña por su protección."
+  />
+</svelte:head>
 
-<Navigator/>
-<section class="introduction">
-  <Slider {images} />
-</section>
-<!-- <section class="gross-stroke">
-  <h1>Puna - 2025</h1>
-</section> -->
-
-<style>
-  @font-face {
-    font-family: "Baloo Tamma";
-    src: url("/BalooTamma.woff2");
-  }
-
-  @font-face {
-    font-family: "Noticia Text";
-    src: url("/NoticiaText-Regular.woff2");
-  }
-
-  :root {
-    /* Color pallete */
-    --panel-a: #b0c4b1;
-    --panel-b: #6a8a82;
-    --headings: #4a403a;
-    --secundary: #7d7064;
-    --black: #222;
-    font-size: 16px;
-    font-family: "Noticia Text";
-  }
-
-  :global(body) {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: max-content;
-    padding: 0 1vh;
-    box-sizing: border-box;
-    background-color: var(--black);
-  }
-
-  :global(main) {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    height: max-content;
-    min-height: 100vh;
-    min-width: 100%;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: var(--panel-a);
-  }
-
-  section {
-    width: 100%;
-    height: max-content;
-    margin: 0;
-    box-sizing: border-box;
-    text-align: center;
-  }
-
-  section.introduction {
-    background: linear-gradient(to bottom, #1119, #2223, #2221, #3331, #4441);
-  }
-
-  section.gross-stroke {
-    height: 80px;
-    background: unset;
-    background-color: #111;
-    flex-grow: 0.1;
-    color: #fff;
-    font-family: "Baloo Tamma";
-  }
-
-  /* section.last-stroke {
-    height: 30rem;
-    background: linear-gradient(to bottom, #2220, #1113, #1118);
-    flex-grow: 3;
-  }
-
-  section.middle-stroke {
-    background: linear-gradient(to bottom, #111a, #2225, #2221, transparent);
-  } */
-</style>
+<Hero years={YEARS} {photoCount} />
