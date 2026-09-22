@@ -54,24 +54,39 @@
   ></div>
 
   <div class="mx-auto w-full max-w-5xl px-4 py-16 text-left md:px-8 md:py-24">
-    <p
-      class="font-display text-sm tracking-[0.2em] text-primary-200 uppercase"
-      in:fly={{ y: 16, duration: 600, delay: 100, easing: cubicOut }}
-    >
-      Humedal Abreo-Malpaso · Rionegro, Antioquia
-    </p>
-
     <h1
       id="hero-title"
-      class="h1 mt-4 max-w-3xl text-balance text-surface-50"
-      in:fly={{ y: 24, duration: 700, delay: 200, easing: cubicOut }}
+      class="h1 max-w-3xl text-balance text-surface-50"
+      in:fly={{ y: 24, duration: 700, delay: 100, easing: cubicOut }}
     >
       Un humedal que desaparece a la vista de todos
     </h1>
 
     <p
+      class="mt-4 flex items-center gap-2 font-display text-sm tracking-[0.2em] text-primary-200 uppercase"
+      in:fly={{ y: 16, duration: 600, delay: 220, easing: cubicOut }}
+    >
+      <!-- Map pin standing in for the wetland's name. `currentColor` keeps it
+           on the same primary-200 as the words beside it. -->
+      <svg
+        class="size-4 shrink-0"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+        <circle cx="12" cy="10" r="3" />
+      </svg>
+      Rionegro, Antioquia
+    </p>
+
+    <p
       class="mt-6 max-w-2xl text-lg text-pretty text-surface-100 md:text-xl"
-      in:fly={{ y: 24, duration: 700, delay: 320, easing: cubicOut }}
+      in:fly={{ y: 24, duration: 700, delay: 340, easing: cubicOut }}
     >
       Donde había espejo de agua, aves y bosque de borde, hoy hay planta
       invasora, quemas y basura. Documentamos el humedal año tras año para que
