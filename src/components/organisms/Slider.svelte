@@ -128,47 +128,7 @@
     }
   }
 
-  select{
-    max-width: 14%;
-    margin: 1rem auto;
-    box-sizing: border-box;
-    padding: 0.25rem 0.46rem;
-    font-size: 1.25rem;
-    font-family: "Noticia Text", Georgia, Times, serif;
-    border-radius: 8px;
-    color: var(--secundary);
-  }
-
   .visible {
     opacity: 1;
-  }
-
-  .slider-button.left {
-    left:calc(42% - 340px)
-  }
-
-  .slider-button.right {
-    right: calc(42% - 340px)
-  }
-
-  .slider-button{
-    position: absolute;
-    top:calc(30% + 20px);
-    font-size:3.55rem;
-    font-weight: 800;
-    background: none;
-    outline:none;
-    border:none;
-    user-select:none;
-    color: #FFF;
-    text-shadow: 1px 2px 2px #222;
-  }
-
-  .slider-button:hover{
-    text-shadow: 1px 1px 3px #121;
-  }
-
-  .slider-button:active{
-    text-shadow: -1px 2px 3px #111;
   }
 </style>

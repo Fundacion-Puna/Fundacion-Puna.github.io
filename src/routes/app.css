@@ -1,1 +1,70 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+@import '@skeletonlabs/skeleton';
+@import '@skeletonlabs/skeleton-svelte';
+@import '@skeletonlabs/skeleton/themes/pine';
+
+/* Project fonts --------------------------------------------------------- */
+
+@font-face {
+	font-family: 'Baloo Tamma';
+	src: url('/BalooTamma.woff2') format('woff2');
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Noticia Text';
+	src: url('/NoticiaText-Regular.woff2') format('woff2');
+	font-display: swap;
+}
+
+/* Keep the site's own typography on top of the Skeleton theme. */
+[data-theme='pine'] {
+	--typo-base--font-family: 'Noticia Text', Georgia, serif;
+	--typo-heading--font-family: 'Baloo Tamma', 'Noticia Text', Georgia, serif;
+	--typo-anchor--font-family: inherit;
+}
+
+@theme {
+	--font-display: 'Baloo Tamma', 'Noticia Text', Georgia, serif;
+}
+
+@layer base {
+	:focus-visible {
+		outline: 2px solid var(--color-primary-500);
+		outline-offset: 2px;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		*,
+		*::before,
+		*::after {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+			scroll-behavior: auto !important;
+		}
+	}
+}
+
+/* Grain overlay ---------------------------------------------------------- */
+
+/* Skeleton's marketing surfaces carry a fine fractal-noise texture that keeps
+   large flat fills from looking like plastic. Reproduced here with an inline
+   feTurbulence SVG so it costs no extra request and scales with the element. */
+@utility bg-grain {
+	position: relative;
+	isolation: isolate;
+
+	&::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		pointer-events: none;
+		opacity: var(--grain-opacity, 0.22);
+		mix-blend-mode: var(--grain-blend, overlay);
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+		background-size: 160px 160px;
+	}
+}
