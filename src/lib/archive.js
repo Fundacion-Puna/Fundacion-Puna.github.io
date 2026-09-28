@@ -11,6 +11,7 @@
  * @property {string} file   Path relative to `static/`.
  * @property {string} [title]
  * @property {string} [date] ISO `yyyy-mm-dd`, when the exact day is known.
+ * @property {string} [legend] Caption shown under the item in the viewer.
  *
  * @typedef {object} ArchiveItem
  * @property {string} id
@@ -19,6 +20,7 @@
  * @property {string} title
  * @property {number} year
  * @property {string} [date]
+ * @property {string} [legend]
  * @property {string} [thumb] Preview relative to `static/`; PDFs may lack one.
  * @property {number} [width] Oriented size of the photo or PDF cover.
  * @property {number} [height]
@@ -135,13 +137,14 @@ const MEDIA = media;
  * @type {readonly ArchiveItem[]}
  */
 export const ARCHIVE = Object.entries(CATALOG).flatMap(([year, entries]) =>
-	entries.map(({ file, title, date }) => ({
+	entries.map(({ file, title, date, legend }) => ({
 		id: file,
 		kind: /** @type {ArchiveKind} */ (file.toLowerCase().endsWith('.pdf') ? 'pdf' : 'photo'),
 		file,
 		title: title ?? UNTITLED,
 		year: Number(year),
 		date,
+		legend,
 		...MEDIA[file]
 	}))
 );

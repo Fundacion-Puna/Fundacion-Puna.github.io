@@ -8,6 +8,7 @@
     type ArchiveKind,
   } from "$lib/archive.js";
   import ArchiveCard from "../molecules/ArchiveCard.svelte";
+  import ArchiveViewer from "./ArchiveViewer.svelte";
   import Masonry from "./Masonry.svelte";
 
   interface Props {
@@ -41,6 +42,15 @@
   let failed = $state(false);
 
   const hasMore = $derived(total === null || items.length < total);
+
+  /** Item in the viewer; left set after closing so it can fade out. */
+  let viewing = $state<ArchiveItem>();
+  let viewerOpen = $state(false);
+
+  function view(item: ArchiveItem) {
+    viewing = item;
+    viewerOpen = true;
+  }
 
   /** Bumped on every filter change, so a page for the old query is dropped. */
   let generation = 0;
@@ -197,7 +207,7 @@
       label="Fotografías y documentos"
     >
       {#snippet item(entry)}
-        <ArchiveCard item={entry} />
+        <ArchiveCard item={entry} onopen={view} />
       {/snippet}
 
       {#snippet placeholder()}
@@ -271,3 +281,5 @@
     {/if}
   </div>
 </section>
+
+<ArchiveViewer item={viewing} bind:open={viewerOpen} />

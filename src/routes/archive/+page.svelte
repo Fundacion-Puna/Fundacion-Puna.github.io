@@ -7,7 +7,7 @@
 </script>
 
 <svelte:head>
-  <title>Archivos — Salvemos Abreo-Malpaso</title>
+  <title>Archivos — Salvando Abreo-Malpaso</title>
   <meta
     name="description"
     content="Fotografías y documentos del humedal Abreo-Malpaso (Rionegro, Antioquia) entre {first} y {last}."

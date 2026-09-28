@@ -4,9 +4,11 @@
 
   interface Props {
     item: ArchiveItem;
+    /** Shows the item in place instead of following the link to the file. */
+    onopen?: (item: ArchiveItem) => void;
   }
 
-  let { item }: Props = $props();
+  let { item, onopen }: Props = $props();
 
   // Catalogue dates are plain days; formatting them in UTC stops Colombia's
   // UTC-5 from turning 15 September into the 14th.
@@ -24,12 +26,21 @@
   const when = $derived(item.date ? DAY.format(new Date(item.date)) : String(item.year));
 
   let loaded = $state(false);
+
+  function onclick(event: MouseEvent) {
+    // Modified clicks keep the link's own behaviour: new tab, window, save.
+    if (!onopen || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    onopen(item);
+  }
 </script>
 
 <a
   href={asset(item.file)}
   target="_blank"
   rel="noopener"
+  aria-haspopup={onopen ? "dialog" : undefined}
+  {onclick}
   class="group block rounded-container no-underline transition-[opacity,translate] duration-500
          ease-out starting:translate-y-3 starting:opacity-0"
 >
@@ -72,7 +83,8 @@
       </div>
     {/if}
 
-    <!-- Hover/focus veil with the "open original" affordance. -->
+    <!-- Hover/focus veil with the "open" affordance: expand in place, or
+         leave for the original file. -->
     <div
       aria-hidden="true"
       class="absolute inset-0 flex items-start justify-end bg-surface-950/0 p-2 transition-colors
@@ -91,7 +103,11 @@
           stroke-linecap="round"
           stroke-linejoin="round"
         >
-          <path d="M7 17 17 7M7 7h10v10" />
+          {#if onopen}
+            <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+          {:else}
+            <path d="M7 17 17 7M7 7h10v10" />
+          {/if}
         </svg>
       </span>
     </div>
@@ -112,7 +128,7 @@
       {/if}
     </p>
     <span class="sr-only">
-      ({isPdf ? "documento PDF, " : ""}se abre en una pestaña nueva)
+      ({isPdf ? "documento PDF, " : ""}{onopen ? "se abre en el visor" : "se abre en una pestaña nueva"})
     </span>
   </div>
 </a>
