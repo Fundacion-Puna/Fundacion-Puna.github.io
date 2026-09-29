@@ -4,10 +4,14 @@
 </script>
 
 <svelte:head>
-  <title>Salvemos Abreo-Malpaso — humedal de Rionegro</title>
+  <title>Salvando Abreo-Malpaso</title>
   <meta
     name="description"
     content="Archivo fotográfico del deterioro del humedal Abreo-Malpaso (Rionegro, Antioquia) entre 2010 y 2024, y campaña por su protección."
+  />
+  <meta
+    name="author"
+      content="M.A.R.Reyes, Johana Patricia Reyes"
   />
 </svelte:head>
 

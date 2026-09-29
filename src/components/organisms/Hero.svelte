@@ -88,8 +88,8 @@
       class="mt-6 max-w-2xl text-lg text-pretty text-surface-100 md:text-xl"
       in:fly={{ y: 24, duration: 700, delay: 340, easing: cubicOut }}
     >
-      Donde había espejo de agua, aves y bosque de borde, hoy hay planta
-      invasora, quemas y basura. Documentamos el humedal año tras año para que
+      Donde había espejo de agua, aves y bosque, hoy hay plantas
+      invasoras, quemas y basura. Documentamos el humedal año tras año para que
       su deterioro deje de ser invisible — y para exigir su protección.
     </p>
 
@@ -121,7 +121,7 @@
           <dd class="font-display text-3xl text-surface-50">{photoCount}</dd>
         </div>
         <div>
-          <dt class="text-sm text-surface-200">Espejo de agua en {last}</dt>
+          <dt class="text-sm text-surface-200">Espejo de agua en 2026</dt>
           <dd class="font-display text-3xl text-surface-50">Ninguno</dd>
         </div>
       </dl>

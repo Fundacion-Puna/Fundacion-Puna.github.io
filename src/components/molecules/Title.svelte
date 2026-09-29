@@ -90,7 +90,7 @@
           easing: cubicOut,
         }}
       >
-        Salvemos
+        Salvando
       </strong>
     </span>
   {/if}
