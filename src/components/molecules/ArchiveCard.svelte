@@ -44,56 +44,60 @@
   class="group block rounded-container no-underline transition-[opacity,translate] duration-500
          ease-out starting:translate-y-3 starting:opacity-0"
 >
+  <!-- The hover shadow lives on a pseudo-element and fades in with opacity:
+       animating box-shadow itself repaints every frame. -->
   <div
-    class="relative overflow-hidden rounded-container bg-surface-200-800 shadow-sm
-           transition-shadow duration-300 group-hover:shadow-xl"
+    class="relative isolate rounded-container shadow-sm after:pointer-events-none after:absolute
+           after:inset-0 after:-z-10 after:rounded-[inherit] after:opacity-0 after:shadow-xl
+           after:transition-opacity after:duration-300 group-hover:after:opacity-100"
   >
-    {#if item.thumb}
-      <img
-        src={asset(item.thumb)}
-        width={item.width}
-        height={item.height}
-        alt=""
-        loading="lazy"
-        decoding="async"
-        onload={() => (loaded = true)}
-        class="block h-auto w-full transition-[opacity,scale] duration-500 ease-out
-               group-hover:scale-[1.04] {loaded ? 'opacity-100' : 'opacity-0'}"
-      />
-    {:else}
-      <!-- A PDF without a generated cover: a sheet-shaped stand-in. -->
-      <div
-        class="flex aspect-[3/4] flex-col items-center justify-center gap-3 bg-grain
-               preset-filled-surface-100-900 text-surface-600-400"
-      >
-        <svg
-          class="size-12"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
+    <div class="overflow-hidden rounded-container bg-surface-200-800">
+      {#if item.thumb}
+        <img
+          src={asset(item.thumb)}
+          width={item.width}
+          height={item.height}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          onload={() => (loaded = true)}
+          class="block h-auto w-full transition-[opacity,scale] duration-300
+                 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform
+                 motion-safe:group-hover:scale-[1.04] {loaded ? 'opacity-100' : 'opacity-0'}"
+        />
+      {:else}
+        <!-- A PDF without a generated cover: a sheet-shaped stand-in. -->
+        <div
+          class="flex aspect-[3/4] flex-col items-center justify-center gap-3 bg-grain
+                 preset-filled-surface-100-900 text-surface-600-400"
         >
-          <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
-          <path d="M14 2v4a2 2 0 0 0 2 2h4" />
-          <path d="M10 13H8M16 13h-4M16 17H8" />
-        </svg>
-      </div>
-    {/if}
+          <svg
+            class="size-12"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+            <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+            <path d="M10 13H8M16 13h-4M16 17H8" />
+          </svg>
+        </div>
+      {/if}
+    </div>
 
     <!-- Hover/focus veil with the "open" affordance: expand in place, or
          leave for the original file. -->
     <div
       aria-hidden="true"
-      class="absolute inset-0 flex items-start justify-end bg-surface-950/0 p-2 transition-colors
-             duration-300 group-hover:bg-surface-950/25 group-focus-visible:bg-surface-950/25"
+      class="absolute inset-0 flex items-start justify-end rounded-container bg-surface-950/25 p-2
+             opacity-0 transition-opacity duration-300 group-hover:opacity-100
+             group-focus-visible:opacity-100"
     >
-      <span
-        class="btn-icon btn-icon-sm preset-filled-surface-50-950 opacity-0 shadow transition-opacity
-               duration-300 group-hover:opacity-100 group-focus-visible:opacity-100"
-      >
+      <span class="btn-icon btn-icon-sm preset-filled-surface-50-950 shadow">
         <svg
           class="size-4"
           viewBox="0 0 24 24"
