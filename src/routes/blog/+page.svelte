@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-  <title>Blog — Salvemos Abreo-Malpaso</title>
+  <title>Blog — Salvando Abreo-Malpaso</title>
 </svelte:head>
 
 <section class="mx-auto max-w-5xl px-4 py-16 md:px-8 md:py-24">
