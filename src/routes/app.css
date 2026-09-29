@@ -35,6 +35,11 @@
 		outline-offset: 2px;
 	}
 
+	/* A modal (the archive viewer) owns the screen; the page stays put behind it. */
+	html:has(dialog:modal) {
+		overflow: hidden;
+	}
+
 	@media (prefers-reduced-motion: reduce) {
 		*,
 		*::before,
