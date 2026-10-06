@@ -7,24 +7,27 @@ on:
 jobs:
   build_site:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [24]
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
-      - name: Install Node.js
-        uses: actions/setup-node@v4
+      - name: Install Node.js and pnpm
+        uses: pnpm/setup@c9883cc79df532ad1a7b81bf9ab944ceb090d65c
         with:
-          node-version: 20
-          cache: npm
+          runtime: node@${{ matrix.node-version }}
+          cache: true
 
       - name: Install dependencies
-        run: npm install
+        run: pnpm install
 
       - name: build
         env:
           BASE_PATH: ''
         run: |
-          npm run build
+          pnpm build
           touch build/.nojekyll
 
       - name: Upload Artifacts
